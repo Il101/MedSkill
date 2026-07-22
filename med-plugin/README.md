@@ -53,7 +53,9 @@ python build_index.py     # скачает MedRAG/textbooks и построит 
 /plugin marketplace add <твой-форк>
 /plugin install medvault@<твой-форк>
 ```
-При активации Claude Code сам поднимает локальный `chroma-mcp` (см. `.mcp.json`).
+`.mcp.json` в корне плагина — стандартное место, Claude Code подхватывает его
+автоматически без ссылки из `plugin.json`; при активации плагина сам поднимает
+локальный `chroma-mcp`.
 
 ### 3. Vault
 ```
