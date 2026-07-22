@@ -52,3 +52,17 @@ temp/
 
 # Claude Code
 .claude/
+
+# Python
+__pycache__/
+*.pyc
+
+# MedVault RAG index (multi-GB ChromaDB build artifact, see med-plugin/README.md)
+med-plugin/rag/index/
+
+# med-eval blind A/B run outputs and the unblinding key
+med-eval/results/A/*
+!med-eval/results/A/.gitkeep
+med-eval/results/B/*
+!med-eval/results/B/.gitkeep
+med-eval/results/label.txt
