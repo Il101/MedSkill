@@ -43,7 +43,7 @@
 
 ### 1. Клонируй репозиторий и собери базу знаний (один раз)
 ```bash
-git clone <owner>/<repo>
+git clone https://github.com/<owner>/<repo>.git <repo>
 cd <repo>/med-plugin/rag
 pip install -r requirements.txt
 python build_index.py     # скачает MedRAG/textbooks и построит локальный индекс
