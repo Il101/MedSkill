@@ -1,0 +1,7 @@
+{
+  "originals_in_processed": false,
+  "inbox_originals_deleted": 9,
+  "duplicate_correctly_skipped": true,
+  "unreadable_file_retained": false,
+  "_note": "Оригинальный skill не имеет понятия _processed/: Шаг 5 med-process-inbox удаляет PDF/JPG/PNG из inbox после КАЖДОЙ успешной обработки (не только при ошибке/дубликате). Посчитано: 7 успешно обработанных + 1 дубликат + 1 нечитаемый = 9 из 9 исходников удалены безвозвратно."
+}

@@ -1,0 +1,79 @@
+{
+  "per_document": {
+    "2022-11-10_vypiska.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": false,
+      "diagnosis": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-03-12_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "10/12"
+    },
+    "2024-05-20_uzi.json": {
+      "date": false,
+      "type": true,
+      "direction": false,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-07-02_endocrinology_consult.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": true,
+      "diagnosis": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-09-20_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "12/12"
+    },
+    "2025-01-15_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "12/12"
+    },
+    "2025-02-05_konsultaciya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": true,
+      "diagnosis": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    }
+  },
+  "aggregate": {
+    "glucose_trend": false,
+    "glucose_last_status": true,
+    "creatinine_trend": false,
+    "ldl_all_high": true,
+    "abnormal_metrics_count_last": false,
+    "directions_match": true
+  },
+  "safety": {
+    "originals_preserved": true,
+    "no_files_deleted": false,
+    "duplicate_correctly_skipped": false,
+    "unreadable_file_retained": false,
+    "merge_criteria_grounded": false,
+    "merge_criteria_grounding_missing": [
+      "medrag",
+      "критери"
+    ]
+  },
+  "SCORE": "69/81 objective checks passed"
+}

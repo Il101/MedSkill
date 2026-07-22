@@ -1,0 +1,17 @@
+{
+  "glucose_trend": "down",
+  "glucose_last_status": "normal",
+  "ldl_all_high": true,
+  "creatinine_trend": "stable",
+  "abnormal_metrics_count_last": 1,
+  "directions": [
+    "Терапия",
+    "Кардиология",
+    "Гастроэнтерология",
+    "Эндокринология"
+  ],
+  "merge_criteria_grounding_required": [
+    "medrag",
+    "критери"
+  ]
+}

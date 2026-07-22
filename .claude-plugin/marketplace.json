@@ -1,0 +1,13 @@
+{
+  "name": "medskill-fork",
+  "owner": {
+    "name": "Il101"
+  },
+  "plugins": [
+    {
+      "name": "medvault",
+      "source": "./med-plugin",
+      "description": "Личная медицинская документация в Obsidian: обработка документов, динамика показателей, сводные гипотезы с проверкой критериев через RAG."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "medrag": {
+      "command": "uvx",
+      "args": [
+        "chroma-mcp",
+        "--client-type", "persistent",
+        "--data-dir", "${CLAUDE_PLUGIN_ROOT}/rag/index"
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "originals_in_processed": true,
+  "inbox_originals_deleted": 0,
+  "duplicate_correctly_skipped": true,
+  "unreadable_file_retained": true,
+  "_note": "Все 9 исходников (7 успешно обработанных + 1 дубликат + 1 нечитаемый) перемещены в _processed/{Год}/ через mv, ни один не удалён."
+}

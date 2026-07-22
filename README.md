@@ -4,18 +4,38 @@
 
 **Поддерживаемые платформы:** macOS, Linux, Windows
 
+## MedVault (`med-plugin/`) — доработанный форк
+
+`med-plugin/` — доработанная версия скиллов из `skills/medical/` для той же
+аудитории (личное, медицински грамотное использование): устранена
+безусловная потеря исходников при обработке inbox, а гипотезы в
+`med-merge-history` теперь сверяют диагностические критерии через
+локальную RAG-базу (MedRAG) вместо памяти модели — тон и confidence-оценки
+гипотез сохранены как в оригинале. Подробности и установка — в
+`med-plugin/README.md`.
+
+`med-eval/` — протокол сравнительного A/B теста «оригинал (`skills/`) vs форк
+(`med-plugin/`)»: golden dataset, авто-скоринг (`score.py`), рубрика для
+ручной оценки. См. `med-eval/README.md`.
+
 ## Структура репозитория
 
 ```
 MedSkill/
+├── .claude-plugin/
+│   └── marketplace.json  # каталог маркетплейса (для /plugin marketplace add)
 ├── skills/
-│   └── medical/          # Медицинские скиллы
+│   └── medical/          # Медицинские скиллы — ОРИГИНАЛ, не менять
 │       ├── med-init/
 │       ├── med-history/
 │       ├── med-index/
 │       ├── med-merge-history/
 │       ├── med-metrics/
 │       └── med-process-inbox/
+├── med-plugin/            # доработанный форк (см. med-plugin/README.md)
+├── med-eval/               # A/B сравнение оригинал vs форк (см. med-eval/README.md)
+├── INSTALL.md              # установка ОРИГИНАЛА (skills/medical/)
+├── QUICKSTART.md           # быстрый старт с ОРИГИНАЛОМ
 └── README.md
 ```
 
