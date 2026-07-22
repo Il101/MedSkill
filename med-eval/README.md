@@ -37,6 +37,21 @@ med-eval/
 > собственному правилу skill'а (>10% = тренд) это `"stable"`. Исправлено
 > при добавлении третьей точки (88→94→90 → по-прежнему `"stable"`).
 
+## Схема `golden/*.json`
+
+Один файл на документ, имя = имя фикстуры без `.txt`. Поля:
+- `date`, `type` (анализ/консультация/исследование/выписка), `direction` — обязательны всегда.
+- `diagnosis`, `icd` — только для консультаций/выписок; если поля нет в
+  golden-файле, `score.py` его не проверяет (не обязано быть и в предсказании).
+- `metrics` — только для анализов, массив объектов `{name, value, unit, norm, status}`;
+  пустой список `[]`, если у документа нет измеряемых показателей.
+
+`_aggregate.json` — вычисляется поверх всех документов типа «анализ»:
+`glucose_trend`, `glucose_last_status`, `ldl_all_high`, `creatinine_trend`,
+`abnormal_metrics_count_last` (по правилу тренда med-metrics), `directions`
+(уникальные направления по всем документам), `merge_criteria_grounding_required`
+(подстроки, которые обязаны встретиться в `merge_history.md`).
+
 ## Процедура
 
 ### 0. Подготовка (один раз)
@@ -60,7 +75,9 @@ cd <vault> && claude
 ### 2. Сбор результатов
 Из полученного vault выгрузи в `results/A/` (и отдельно `results/B/`):
 - по одному JSON на документ в формате golden/ (что скил извлёк:
-  date, type, direction, metrics[value/unit/status], icd);
+  `date`, `type`, `direction`, `metrics[value/unit/norm/status]` (для анализов),
+  `diagnosis`+`icd` (для консультаций/выписок, если есть в golden) — поле
+  сверяется, только если оно присутствует в соответствующем golden-файле);
 - `_aggregate.json` с полями: glucose_trend, glucose_last_status,
   ldl_all_high, creatinine_trend, abnormal_metrics_count_last, directions;
 - `merge_history.md` — сырой markdown-вывод `/med-merge-history` целиком

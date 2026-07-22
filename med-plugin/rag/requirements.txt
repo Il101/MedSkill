@@ -1,0 +1,6 @@
+# Зафиксированы нижние границы, не точные версии — специального lock-файла
+# для этого личного скрипта нет. API, на который опирается build_index.py
+# (embedding_functions.DefaultEmbeddingFunction, PersistentClient,
+# get_or_create_collection), сверен с текущей документацией chromadb.
+chromadb>=1.0
+datasets>=2.19

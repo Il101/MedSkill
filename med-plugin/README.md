@@ -21,8 +21,9 @@
 
 - `skill.md` → `SKILL.md` + YAML frontmatter (автоактивация работает) — во всех 6 скиллах
 - `med-process-inbox`: оригиналы **перемещаются** в `_processed/`, не удаляются;
-  убрано авто-удаление «не распознан/повреждён» — единственное изменение,
-  не связанное со сменой аудитории (тон и гипотезы оригинала сохранены)
+  убрано авто-удаление «не распознан/повреждён» — это не смягчение под
+  незнакомого пользователя (тон и гипотезы оригинала сохранены везде), а
+  разовая правка, полезная независимо от того, кто и как пользуется плагином
 - RAG-слой (`medrag`, коллекция `medrag_textbooks`) добавлен не только в
   `med-metrics` — он используется в 5 из 6 скиллов везде, где раньше цифра
   бралась по памяти модели:
@@ -43,15 +44,17 @@
 ### 1. База знаний (один раз)
 ```bash
 cd rag
-pip install chromadb datasets
+pip install -r requirements.txt
 python build_index.py     # скачает MedRAG/textbooks и построит локальный индекс
 ```
 Всё локально: default-эмбеддинги (sentence-transformers), без API-ключей.
 
 ### 2. Плагин
+Каталог маркетплейса — `.claude-plugin/marketplace.json` в корне этого
+репозитория (marketplace `medskill-fork`, плагин `medvault` → `./med-plugin`):
 ```
-/plugin marketplace add <твой-форк>
-/plugin install medvault@<твой-форк>
+/plugin marketplace add <owner>/<repo>     # или путь к локальному клону
+/plugin install medvault@medskill-fork
 ```
 `.mcp.json` в корне плагина — стандартное место, Claude Code подхватывает его
 автоматически без ссылки из `plugin.json`; при активации плагина сам поднимает

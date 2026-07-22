@@ -22,14 +22,20 @@
 
 ```
 MedSkill/
+├── .claude-plugin/
+│   └── marketplace.json  # каталог маркетплейса (для /plugin marketplace add)
 ├── skills/
-│   └── medical/          # Медицинские скиллы
+│   └── medical/          # Медицинские скиллы — ОРИГИНАЛ, не менять
 │       ├── med-init/
 │       ├── med-history/
 │       ├── med-index/
 │       ├── med-merge-history/
 │       ├── med-metrics/
 │       └── med-process-inbox/
+├── med-plugin/            # доработанный форк (см. med-plugin/README.md)
+├── med-eval/               # A/B сравнение оригинал vs форк (см. med-eval/README.md)
+├── INSTALL.md              # установка ОРИГИНАЛА (skills/medical/)
+├── QUICKSTART.md           # быстрый старт с ОРИГИНАЛОМ
 └── README.md
 ```
 

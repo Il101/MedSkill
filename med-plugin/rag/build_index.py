@@ -3,11 +3,17 @@
 Строит локальный ChromaDB-индекс из корпуса MedRAG Textbooks.
 Запуск один раз перед первым использованием плагина:
 
-    pip install chromadb datasets
+    pip install -r requirements.txt
     python build_index.py
 
 Всё локально: default embeddings (sentence-transformers), без API-ключей.
 Индекс кладётся в ./index — тот же путь, что читает chroma-mcp в .mcp.json.
+
+Имена полей строки датасета (id/title/content, сплит train) взяты по
+конвенции официального тулкита Teddy-XiongGZ/MedRAG (src/utils.py) — их
+фактическое наличие в текущей версии MedRAG/textbooks на HuggingFace не
+проверялось вживую (сеть недоступна в среде разработки). Если запуск упадёт
+на KeyError — проверь реальную схему на странице датасета.
 """
 import chromadb
 from chromadb.utils import embedding_functions
