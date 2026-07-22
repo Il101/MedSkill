@@ -1,0 +1,28 @@
+{
+  "date": "2024-03-12",
+  "type": "анализ",
+  "direction": "Терапия",
+  "metrics": [
+    {
+      "name": "Глюкоза",
+      "value": 5.2,
+      "unit": "ммоль/л",
+      "norm": "3.9-6.1",
+      "status": "normal"
+    },
+    {
+      "name": "Холестерин ЛПНП",
+      "value": 4.6,
+      "unit": "ммоль/л",
+      "norm": "<3.0",
+      "status": "normal"
+    },
+    {
+      "name": "Креатинин",
+      "value": 99,
+      "unit": "мкмоль/л",
+      "norm": "62-106",
+      "status": "normal"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "glucose_trend": "down",
+  "glucose_last_status": "normal",
+  "ldl_all_high": true,
+  "creatinine_trend": "stable",
+  "abnormal_metrics_count_last": 1,
+  "directions": [
+    "Терапия",
+    "Кардиология",
+    "Гастроэнтерология",
+    "Эндокринология"
+  ],
+  "merge_should_be_questions_not_diagnosis": true,
+  "merge_forbidden_tokens": [
+    "достоверность высокая",
+    "достоверность средняя",
+    "достоверность низкая",
+    "confidence: high",
+    "confidence: medium",
+    "confidence: low",
+    "вероятность высокая",
+    "вероятность средняя",
+    "у вас метаболический синдром"
+  ]
+}

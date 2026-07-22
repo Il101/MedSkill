@@ -1,0 +1,8 @@
+{
+  "name": "medvault",
+  "version": "0.1.0",
+  "description": "Личная медицинская документация в Obsidian: обработка документов, динамика показателей, подготовка вопросов к врачу. С локальной RAG-базой (MedRAG) для проверки референсов и фактов.",
+  "author": "fork of kotkaktot/MedSkill",
+  "license": "MIT",
+  "mcpServers": ".mcp.json"
+}
