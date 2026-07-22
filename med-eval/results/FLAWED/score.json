@@ -5,6 +5,7 @@
       "type": true,
       "direction": true,
       "icd": false,
+      "diagnosis": true,
       "metrics_extracted_all": true,
       "metrics_fields_ratio": "n/a"
     },
@@ -13,7 +14,7 @@
       "type": true,
       "direction": true,
       "metrics_extracted_all": true,
-      "metrics_fields_ratio": "7/9"
+      "metrics_fields_ratio": "10/12"
     },
     "2024-05-20_uzi.json": {
       "date": false,
@@ -27,6 +28,7 @@
       "type": true,
       "direction": true,
       "icd": true,
+      "diagnosis": true,
       "metrics_extracted_all": true,
       "metrics_fields_ratio": "n/a"
     },
@@ -35,20 +37,21 @@
       "type": true,
       "direction": true,
       "metrics_extracted_all": true,
-      "metrics_fields_ratio": "9/9"
+      "metrics_fields_ratio": "12/12"
     },
     "2025-01-15_biohimiya.json": {
       "date": true,
       "type": true,
       "direction": true,
       "metrics_extracted_all": true,
-      "metrics_fields_ratio": "9/9"
+      "metrics_fields_ratio": "12/12"
     },
     "2025-02-05_konsultaciya.json": {
       "date": true,
       "type": true,
       "direction": true,
       "icd": true,
+      "diagnosis": true,
       "metrics_extracted_all": true,
       "metrics_fields_ratio": "n/a"
     }
@@ -72,5 +75,5 @@
       "критери"
     ]
   },
-  "SCORE": "57/69 objective checks passed"
+  "SCORE": "69/81 objective checks passed"
 }

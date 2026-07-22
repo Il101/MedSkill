@@ -24,6 +24,13 @@ def main():
     ef = embedding_functions.DefaultEmbeddingFunction()
     coll = client.get_or_create_collection(name=COLLECTION, embedding_function=ef)
 
+    existing = coll.count()
+    if existing > 0:
+        print(f"В коллекции '{COLLECTION}' уже {existing} чанков — похоже, индекс "
+              f"уже построен (или прошлый запуск прервался на середине).")
+        print(f"Чтобы пересобрать с нуля: удали {INDEX_DIR} и запусти скрипт заново.")
+        return
+
     print("Загружаю MedRAG/textbooks с HuggingFace…")
     ds = load_dataset("MedRAG/textbooks", split="train")
     print(f"Всего чанков: {len(ds)}")
