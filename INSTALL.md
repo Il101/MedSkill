@@ -4,6 +4,10 @@
 > доработанный форк с более безопасной обработкой inbox и RAG-сверкой
 > референсов/критериев — см. `med-plugin/README.md`.
 
+> **Не медицинская консультация.** Скиллы не заменяют врача — они помогают
+> организовать твои же документы и предположить, на что стоит обратить
+> внимание. Решения о диагнозе и лечении принимает только врач.
+
 ## Требования
 
 1. **Claude Code** - CLI инструмент от Anthropic
@@ -397,7 +401,7 @@ cp -r ~/Documents/GitHub/MedSkill/skills/medical/* ~/.claude/skills/
 cd ~/.claude/skills/
 
 # Удаление медицинских скиллов
-rm -rf med-history med-index med-merge-history med-metrics med-process-inbox
+rm -rf med-init med-history med-index med-merge-history med-metrics med-process-inbox
 ```
 
 ## Troubleshooting

@@ -40,7 +40,7 @@ def as_int(v):
     except (TypeError, ValueError):
         return None
 
-def score_doc(pred, truth):
+def score_doc(pred, truth, pred_exists=True):
     """Точность извлечения одного документа. Возвращает (checks, passed, total)."""
     checks = {}
     passed = 0
@@ -74,7 +74,10 @@ def score_doc(pred, truth):
             if name in pm and pm[name].get(field) == t.get(field):
                 metric_hits += 1
 
-    checks["metrics_extracted_all"] = (set(tm) == set(pm))
+    # pred_exists=False должен провалить эту проверку даже если у документа
+    # вообще нет показателей (tm пуст) — иначе отсутствующий файл предсказания
+    # тихо засчитывается как "все показатели извлечены" через set() == set().
+    checks["metrics_extracted_all"] = pred_exists and (set(tm) == set(pm))
     checks["metrics_fields_ratio"] = f"{metric_hits}/{metric_total}" if metric_total else "n/a"
     passed += int(checks["metrics_extracted_all"]); total += 1
     passed += metric_hits; total += metric_total
@@ -96,9 +99,10 @@ def main(results_dir):
             continue
         pred_p = rd / gp.name
         truth = load(gp)
-        pred = load(pred_p) if pred_p.exists() else {}
-        checks, doc_passed, doc_total = score_doc(pred, truth)
-        if not pred_p.exists():
+        pred_exists = pred_p.exists()
+        pred = load(pred_p) if pred_exists else {}
+        checks, doc_passed, doc_total = score_doc(pred, truth, pred_exists)
+        if not pred_exists:
             checks["MISSING"] = True
         report["per_document"][gp.name] = checks
         passed += doc_passed

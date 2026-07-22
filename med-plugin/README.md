@@ -41,19 +41,32 @@
 
 ## Установка
 
-### 1. База знаний (один раз)
+### 1. Клонируй репозиторий и собери базу знаний (один раз)
 ```bash
-cd rag
+git clone https://github.com/<owner>/<repo>.git <repo>
+cd <repo>/med-plugin/rag
 pip install -r requirements.txt
 python build_index.py     # скачает MedRAG/textbooks и построит локальный индекс
 ```
-Всё локально: default-эмбеддинги (sentence-transformers), без API-ключей.
+Всё локально: default-эмбеддинги (ONNX MiniLM через `chromadb`, без
+`sentence-transformers` и без API-ключей). Индекс окажется в
+`<repo>/med-plugin/rag/index`.
 
-### 2. Плагин
-Каталог маркетплейса — `.claude-plugin/marketplace.json` в корне этого
-репозитория (marketplace `medskill-fork`, плагин `medvault` → `./med-plugin`):
+Для запуска самого индекс-сервера нужен установленный
+[`uv`](https://docs.astral.sh/uv/) — `.mcp.json` стартует его как `uvx
+chroma-mcp`, отдельно ставить `chroma-mcp` не нужно, `uvx` подтянет его сам.
+
+### 2. Плагин — ставь ИЗ ТОГО ЖЕ КЛОНА, где собран индекс
+`.mcp.json` в корне плагина читает индекс из `${CLAUDE_PLUGIN_ROOT}/rag/index`.
+При установке через `/plugin marketplace add <owner>/<repo>` (по GitHub)
+Claude Code копирует плагин в свой кэш, и `CLAUDE_PLUGIN_ROOT` будет
+указывать на пустую копию без индекса — `medrag` молча не найдёт ничего.
+Поэтому ставь плагин **путём к локальному клону**, где ты только что
+собрал индекс (каталог маркетплейса — `.claude-plugin/marketplace.json` в
+корне репозитория; marketplace `medskill-fork`, плагин `medvault` →
+`./med-plugin`):
 ```
-/plugin marketplace add <owner>/<repo>     # или путь к локальному клону
+/plugin marketplace add <путь_к_локальному_клону>
 /plugin install medvault@medskill-fork
 ```
 `.mcp.json` в корне плагина — стандартное место, Claude Code подхватывает его
@@ -71,4 +84,4 @@ python build_index.py     # скачает MedRAG/textbooks и построит 
 RAG на него не влияет.
 
 ## Стек (всё бесплатно, Apache 2.0 / открытые лицензии)
-ChromaDB · chroma-core/chroma-mcp · sentence-transformers (локально) · MedRAG Textbooks
+ChromaDB · chroma-core/chroma-mcp (через `uv`/`uvx`) · ONNX MiniLM (default embeddings, локально) · MedRAG Textbooks

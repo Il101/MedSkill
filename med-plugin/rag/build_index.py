@@ -6,7 +6,7 @@
     pip install -r requirements.txt
     python build_index.py
 
-Всё локально: default embeddings (sentence-transformers), без API-ключей.
+Всё локально: default embeddings (ONNX MiniLM через chromadb), без API-ключей.
 Индекс кладётся в ./index — тот же путь, что читает chroma-mcp в .mcp.json.
 
 Имена полей строки датасета (id/title/content, сплит train) взяты по
@@ -26,7 +26,9 @@ BATCH = 512
 
 def main():
     client = chromadb.PersistentClient(path=INDEX_DIR)
-    # default = локальный all-MiniLM-L6-v2, без ключей и без сети (после первой загрузки модели)
+    # DefaultEmbeddingFunction = ONNX-версия all-MiniLM-L6-v2, встроена в
+    # chromadb (пакет sentence-transformers не используется и не нужен)
+    # — без ключей и без сети (после первой загрузки модели)
     ef = embedding_functions.DefaultEmbeddingFunction()
     coll = client.get_or_create_collection(name=COLLECTION, embedding_function=ef)
 
@@ -44,6 +46,12 @@ def main():
     buf_ids, buf_docs, buf_meta = [], [], []
     added = 0
     for i, row in enumerate(ds):
+        if "content" not in row:
+            raise KeyError(
+                f"У строки {i} датасета нет поля 'content'. Реальные поля: "
+                f"{sorted(row.keys())}. Схема MedRAG/textbooks на HuggingFace "
+                f"изменилась — поправь имя поля здесь (сейчас читается row['content'])."
+            )
         buf_ids.append(str(row.get("id", i)))
         buf_docs.append(row["content"])
         buf_meta.append({"title": row.get("title", ""), "source": "medrag_textbooks"})
