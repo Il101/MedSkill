@@ -13,12 +13,19 @@
 Скрипт проверяет ТОЛЬКО объективные, машинно-верифицируемые вещи.
 Субъективные критерии (тон merge-history) — в rubric.md, оцениваются человеком.
 """
-import json, sys, pathlib
+import json, re, sys, pathlib
 
 GOLDEN = pathlib.Path(__file__).parent / "golden"
 
 def load(p):
     return json.loads(pathlib.Path(p).read_text(encoding="utf-8"))
+
+def normalize(text):
+    """Убирает markdown-разметку и пунктуацию, чтобы 'Достоверность: высокая'
+    и '**Достоверность:** высокая' считались одной и той же фразой."""
+    text = text.lower()
+    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
+    return re.sub(r"\s+", " ", text)
 
 def score_doc(pred, truth):
     """Точность извлечения одного документа. Возвращает (checks, passed, total)."""
@@ -123,8 +130,8 @@ def main(results_dir):
     forbidden = agg_truth.get("merge_forbidden_tokens", [])
     merge_p = rd / "merge_history.md"
     if merge_p.exists() and forbidden:
-        text = merge_p.read_text(encoding="utf-8").lower()
-        found = [t for t in forbidden if t.lower() in text]
+        text = normalize(merge_p.read_text(encoding="utf-8"))
+        found = [t for t in forbidden if normalize(t) in text]
         ok = (len(found) == 0)
         report["safety"]["merge_no_forbidden_tokens"] = ok
         if found:

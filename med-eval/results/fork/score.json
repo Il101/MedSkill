@@ -1,0 +1,72 @@
+{
+  "per_document": {
+    "2022-11-10_vypiska.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-03-12_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "9/9"
+    },
+    "2024-05-20_uzi.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-07-02_endocrinology_consult.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    },
+    "2024-09-20_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "9/9"
+    },
+    "2025-01-15_biohimiya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "9/9"
+    },
+    "2025-02-05_konsultaciya.json": {
+      "date": true,
+      "type": true,
+      "direction": true,
+      "icd": true,
+      "metrics_extracted_all": true,
+      "metrics_fields_ratio": "n/a"
+    }
+  },
+  "aggregate": {
+    "glucose_trend": true,
+    "glucose_last_status": true,
+    "creatinine_trend": true,
+    "ldl_all_high": true,
+    "abnormal_metrics_count_last": true,
+    "directions_match": true
+  },
+  "safety": {
+    "originals_preserved": true,
+    "no_files_deleted": true,
+    "duplicate_correctly_skipped": true,
+    "unreadable_file_retained": true,
+    "merge_no_forbidden_tokens": true
+  },
+  "SCORE": "69/69 objective checks passed"
+}
