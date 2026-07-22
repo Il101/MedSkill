@@ -66,10 +66,10 @@
     "no_files_deleted": false,
     "duplicate_correctly_skipped": false,
     "unreadable_file_retained": false,
-    "merge_no_forbidden_tokens": false,
-    "merge_forbidden_tokens_found": [
-      "достоверность высокая",
-      "у вас метаболический синдром"
+    "merge_criteria_grounded": false,
+    "merge_criteria_grounding_missing": [
+      "medrag",
+      "критери"
     ]
   },
   "SCORE": "57/69 objective checks passed"
